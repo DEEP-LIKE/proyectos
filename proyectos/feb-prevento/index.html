@@ -974,50 +974,73 @@
         <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999">
             <button
                 id="copyBtn"
-                onclick="copyRichText()"
+                onclick="copyPerfectHtml()"
                 style="
                     background-color: #f7a800;
                     color: white;
                     border: none;
-                    padding: 16px 24px;
-                    border-radius: 8px;
+                    padding: 18px 30px;
+                    border-radius: 50px;
                     font-weight: bold;
                     cursor: pointer;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                    font-family: &quot;Roboto&quot;, sans-serif;
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+                    font-family: Arial, sans-serif;
+                    font-size: 16px;
                 "
             >
-                📋 COPIAR CORREO (FORMATO REAL)
+                🚀 COPIAR CORREO (FORMATO BEEFREE)
             </button>
         </div>
 
         <script>
-            function copyRichText() {
-                const container = document.querySelector(".nl-container"); // Selecciona el contenedor principal
-                const range = document.createRange();
-                range.selectNode(container);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
+            async function copyPerfectHtml() {
+                const container = document.querySelector(".nl-container");
+
+                // Clonamos para no afectar lo que ves en pantalla
+                const clone = container.cloneNode(true);
+
+                // 1. Convertir rutas de imágenes a ABSOLUTAS (para que se vean en el mail)
+                const images = clone.querySelectorAll("img");
+                images.forEach((img) => {
+                    const src = img.getAttribute("src");
+                    if (src && !src.startsWith("http")) {
+                        // Cambia esto por la URL real de donde subiste las imágenes
+                        img.src =
+                            "https://proyectos.carbono.mx/proyectos/feb-prevento/" +
+                            src;
+                    }
+                });
+
+                // 2. Capturar el HTML con estilos
+                const fullHtml = `
+        <html>
+            <head>
+                <style>
+                    body { margin: 0; padding: 0; background-color: #f7a800; }
+                    .nl-container { background-color: #f7a800 !important; width: 100% !important; }
+                </style>
+            </head>
+            <body>${clone.outerHTML}</body>
+        </html>
+    `;
+
+                const type = "text/html";
+                const blob = new Blob([fullHtml], { type });
+                const data = [new ClipboardItem({ [type]: blob })];
 
                 try {
-                    // Forzamos el comando de copia del sistema para capturar el renderizado
-                    const successful = document.execCommand("copy");
+                    await navigator.clipboard.write(data);
                     const btn = document.getElementById("copyBtn");
-
-                    if (successful) {
-                        btn.innerText = "✅ ¡LISTO PARA PEGAR!";
-                        btn.style.backgroundColor = "#4CAF50";
-                        setTimeout(() => {
-                            btn.innerText = "📋 COPIAR CORREO (FORMATO REAL)";
-                            btn.style.backgroundColor = "#f7a800";
-                        }, 3000);
-                    }
+                    btn.innerText = "✅ ¡LISTO! PÉGALO EN TU MAIL";
+                    btn.style.backgroundColor = "#4CAF50";
+                    setTimeout(() => {
+                        btn.innerText = "🚀 COPIAR CORREO (FORMATO BEEFREE)";
+                        btn.style.backgroundColor = "#f7a800";
+                    }, 3000);
                 } catch (err) {
-                    alert(
-                        "Error al copiar. Intenta seleccionando manualmente.",
-                    );
+                    console.error(err);
+                    alert("Error al copiar. Intenta abrir la página en HTTPS.");
                 }
-                window.getSelection().removeAllRanges();
             }
         </script>
     </body>
