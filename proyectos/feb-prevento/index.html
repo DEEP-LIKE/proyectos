@@ -110,7 +110,6 @@
     <body
         class="body"
         style="
-            background-color: #ffffff;
             margin: 0;
             padding: 0;
             -webkit-text-size-adjust: none;
@@ -124,11 +123,7 @@
             cellpadding="0"
             cellspacing="0"
             role="presentation"
-            style="
-                mso-table-lspace: 0pt;
-                mso-table-rspace: 0pt;
-                background-color: #ffffff;
-            "
+            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt"
         >
             <tbody>
                 <tr>
@@ -174,6 +169,7 @@
                                                             font-weight: 400;
                                                             text-align: left;
                                                             vertical-align: top;
+                                                            background-color: #f7a800;
                                                         "
                                                     >
                                                         <table
@@ -191,8 +187,10 @@
                                                             <tr>
                                                                 <td
                                                                     class="pad"
+                                                                    bgcolor="#f7a800"
                                                                     style="
                                                                         width: 100%;
+                                                                        background-color: #f7a800;
                                                                     "
                                                                 >
                                                                     <div
@@ -274,6 +272,7 @@
                                                             padding-bottom: 0px;
                                                             padding-top: 0px;
                                                             vertical-align: top;
+                                                            background-color: #f7a800;
                                                         "
                                                     >
                                                         <table
@@ -291,8 +290,10 @@
                                                             <tr>
                                                                 <td
                                                                     class="pad"
+                                                                    bgcolor="#f7a800"
                                                                     style="
                                                                         width: 100%;
+                                                                        background-color: #f7a800;
                                                                     "
                                                                 >
                                                                     <div
@@ -337,6 +338,7 @@
                                                             padding-bottom: 0px;
                                                             padding-top: 0px;
                                                             vertical-align: top;
+                                                            background-color: #f7a800;
                                                         "
                                                     >
                                                         <table
@@ -354,8 +356,10 @@
                                                             <tr>
                                                                 <td
                                                                     class="pad"
+                                                                    bgcolor="#f7a800"
                                                                     style="
                                                                         width: 100%;
+                                                                        background-color: #f7a800;
                                                                     "
                                                                 >
                                                                     <div
@@ -440,6 +444,7 @@
                                                             padding-bottom: 0px;
                                                             padding-top: 0px;
                                                             vertical-align: top;
+                                                            background-color: #f7a800;
                                                         "
                                                     >
                                                         <table
@@ -498,6 +503,7 @@
                                                             padding-bottom: 0px;
                                                             padding-top: 0px;
                                                             vertical-align: top;
+                                                            background-color: #f7a800;
                                                         "
                                                     >
                                                         <table
@@ -570,6 +576,7 @@
                                                             padding-bottom: 0px;
                                                             padding-top: 0px;
                                                             vertical-align: top;
+                                                            background-color: #f7a800;
                                                         "
                                                     >
                                                         <table
@@ -587,8 +594,10 @@
                                                             <tr>
                                                                 <td
                                                                     class="pad"
+                                                                    bgcolor="#f7a800"
                                                                     style="
                                                                         width: 100%;
+                                                                        background-color: #f7a800;
                                                                     "
                                                                 >
                                                                     <div
@@ -666,6 +675,7 @@
                                                             font-weight: 400;
                                                             text-align: left;
                                                             vertical-align: top;
+                                                            background-color: #f7a800;
                                                         "
                                                     >
                                                         <table
@@ -683,8 +693,10 @@
                                                             <tr>
                                                                 <td
                                                                     class="pad"
+                                                                    bgcolor="#f7a800"
                                                                     style="
                                                                         width: 100%;
+                                                                        background-color: #f7a800;
                                                                     "
                                                                 >
                                                                     <div
@@ -781,5 +793,76 @@
             </tbody>
         </table>
         <!-- End -->
+
+        <style>
+            .btn-copy-container {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1000;
+                font-family: "Roboto", sans-serif;
+            }
+            .btn-copy {
+                background-color: #f7a800; /* Color naranja de tu marca */
+                color: white;
+                border: none;
+                padding: 15px 25px;
+                border-radius: 30px;
+                cursor: pointer;
+                font-weight: bold;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                transition: transform 0.2s;
+            }
+            .btn-copy:hover {
+                transform: scale(1.05);
+                background-color: #d69200;
+            }
+        </style>
+
+        <div class="btn-copy-container">
+            <button class="btn-copy" onclick="copyEmailHtml()">
+                📋 Copiar Correo para Pegar
+            </button>
+        </div>
+
+        <script>
+            async function copyEmailHtml() {
+                // 1. Obtenemos el contenedor principal del correo (nl-container)
+                const emailElement = document.querySelector(".nl-container");
+
+                // 2. Creamos un Blob de tipo HTML
+                // Incluimos los estilos del <head> para que los fondos y media queries se mantengan
+                const fullHtml = `
+        <html>
+            <head>${document.head.innerHTML}</head>
+            <body>${emailElement.outerHTML}</body>
+        </html>
+    `;
+
+                const type = "text/html";
+                const blob = new Blob([fullHtml], { type });
+                const data = [new ClipboardItem({ [type]: blob })];
+
+                try {
+                    await navigator.clipboard.write(data);
+
+                    // Feedback visual
+                    const btn = document.querySelector(".btn-copy");
+                    const originalText = btn.innerText;
+                    btn.innerText = "✅ ¡Copiado! Pégalo en tu Mail";
+                    btn.style.backgroundColor = "#4CAF50";
+
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.backgroundColor = "#f7a800";
+                    }, 3000);
+                } catch (err) {
+                    console.error("Error al copiar: ", err);
+                    alert(
+                        "Hubo un error al copiar. Asegúrate de usar una conexión segura (HTTPS).",
+                    );
+                }
+            }
+        </script>
     </body>
 </html>
