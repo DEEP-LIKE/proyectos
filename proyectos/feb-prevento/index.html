@@ -971,83 +971,55 @@
             </tbody>
         </table>
         <!-- End -->
-        <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999">
-            <button
-                id="copyBtn"
-                onclick="copyUltraCompatible()"
-                style="
-                    background-color: #f7a800;
-                    color: white;
-                    border: none;
-                    padding: 20px 35px;
-                    border-radius: 50px;
-                    font-weight: bold;
-                    cursor: pointer;
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-                    font-family: Arial, sans-serif;
-                    font-size: 18px;
-                    border: 2px solid white;
-                "
-            >
-                🎯 COPIAR DISEÑO COMPLETO
-            </button>
-        </div>
-
         <script>
-            async function copyUltraCompatible() {
+            async function copyEmailPro() {
                 const container = document.querySelector(".nl-container");
                 const clone = container.cloneNode(true);
                 const baseUrl =
                     "https://proyectos.carbono.mx/proyectos/feb-prevento/";
 
-                // 1. Corregir TODAS las imágenes <img>
-                clone.querySelectorAll("img").forEach((img) => {
-                    const src = img.getAttribute("src");
-                    if (src && !src.startsWith("http")) {
-                        img.src = baseUrl + src;
-                    }
-                    // Asegurar que no se deformen
-                    img.style.display = "block";
-                });
-
-                // 2. FORZAR FONDOS (Background Images y Colors)
-                // Buscamos elementos que en el CSS original tengan fondos
-                const elementsWithBg = clone.querySelectorAll("*");
-                elementsWithBg.forEach((el) => {
-                    // Si es el contenedor principal, forzamos el naranja
-                    if (el.classList.contains("nl-container")) {
-                        el.style.backgroundColor = "#f7a800";
-                        el.style.width = "100%";
+                // 1. REPARAR FONDOS DE CABECERA (El problema principal)
+                // Buscamos todas las celdas o tablas que tengan background en el HTML original
+                const allElements = clone.querySelectorAll("*");
+                allElements.forEach((el) => {
+                    // Corregir imágenes <img>
+                    if (el.tagName === "IMG") {
+                        const src = el.getAttribute("src");
+                        if (src && !src.startsWith("http"))
+                            el.src = baseUrl + src;
                     }
 
-                    // Corregir backgrounds en los estilos inline
-                    const bgImg = el.style.backgroundImage;
-                    if (
-                        bgImg &&
-                        bgImg.includes("url(") &&
-                        !bgImg.includes("http")
-                    ) {
-                        el.style.backgroundImage = bgImg.replace(
+                    // Corregir Background Images en el estilo inline
+                    const bg = el.style.backgroundImage;
+                    if (bg && bg.includes("url(")) {
+                        const cleanBg = bg.replace(
                             /url\(['"]?(.*?)['"]?\)/g,
-                            `url('${baseUrl}$1')`,
+                            (match, p1) => {
+                                return p1.startsWith("http")
+                                    ? match
+                                    : `url('${baseUrl}${p1}')`;
+                            },
                         );
+                        el.style.backgroundImage = cleanBg;
+                        el.style.backgroundRepeat = "no-repeat";
+                        el.style.backgroundPosition = "top center";
+                    }
+
+                    // FORZAR EL COLOR NARANJA DE RESPALDO
+                    // Si el elemento es una celda de la cabecera, le ponemos el color a mano
+                    if (
+                        el.getAttribute("bgcolor") ||
+                        el.style.backgroundColor
+                    ) {
+                        el.style.backgroundColor = "#f7a800";
                     }
                 });
 
-                // 3. Crear el envoltorio HTML final con estilos críticos en el Head
+                // 2. EMBALAJE FINAL
                 const finalHtml = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <style>
-                body, table, td { background-color: #f7a800 !important; }
-                .nl-container { background-color: #f7a800 !important; }
-            </style>
-        </head>
-        <body style="margin:0; padding:0; background-color: #f7a800;">
+        <div style="background-color: #f7a800; width: 100%; margin: 0; padding: 0;">
             ${clone.outerHTML}
-        </body>
-        </html>
+        </div>
     `;
 
                 try {
@@ -1057,16 +1029,15 @@
                     await navigator.clipboard.write(data);
 
                     const btn = document.getElementById("copyBtn");
-                    btn.innerText = "✨ ¡COPIADO CON ÉXITO!";
+                    btn.innerText = "✨ ¡LISTO PARA TU MAIL!";
                     btn.style.backgroundColor = "#4CAF50";
                     setTimeout(() => {
                         btn.innerText = "🎯 COPIAR DISEÑO COMPLETO";
                         btn.style.backgroundColor = "#f7a800";
                     }, 3000);
                 } catch (err) {
-                    console.error(err);
                     alert(
-                        "Error crítico al copiar. Verifica que la URL sea HTTPS.",
+                        "Error al copiar. Asegúrate de estar en la URL https://",
                     );
                 }
             }
