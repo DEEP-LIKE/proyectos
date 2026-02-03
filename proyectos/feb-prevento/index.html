@@ -169,7 +169,8 @@
                                             style="
                                                 mso-table-lspace: 0pt;
                                                 mso-table-rspace: 0pt;
-                                                background-image: url(&quot;images/1_background_1.png&quot;);
+                                                background-color: #f7a800;
+                                                background-image: url(&quot;images/1_1_background_1.png&quot;);
                                                 background-repeat: no-repeat;
                                                 background-size: auto;
                                                 border-radius: 0;
@@ -681,7 +682,7 @@
                                                                         padding-bottom: 20px;
                                                                         padding-left: 30px;
                                                                         padding-right: 30px;
-                                                                        padding-top: 10px;
+                                                                        padding-top: 2px;
                                                                     "
                                                                 >
                                                                     <div
@@ -971,28 +972,62 @@
             </tbody>
         </table>
         <!-- End -->
+        <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999">
+            <button
+                id="copyBtn"
+                onclick="copyEmailExact()"
+                style="
+                    background-color: #f7a800;
+                    color: white;
+                    border: 2px solid #ffffff;
+                    padding: 18px 30px;
+                    border-radius: 50px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                    font-family: &quot;Roboto&quot;, Arial, sans-serif;
+                    font-size: 16px;
+                    transition: all 0.3s ease;
+                "
+            >
+                🚀 COPIAR CORREO (CON FONDOS)
+            </button>
+        </div>
+
         <script>
-            async function copyEmailPro() {
-                const container = document.querySelector(".nl-container");
-                const clone = container.cloneNode(true);
+            async function copyEmailExact() {
                 const baseUrl =
                     "https://proyectos.carbono.mx/proyectos/feb-prevento/";
+                const container = document.querySelector(".nl-container");
 
-                // 1. REPARAR FONDOS DE CABECERA (El problema principal)
-                // Buscamos todas las celdas o tablas que tengan background en el HTML original
+                // Clonamos el contenido para procesarlo sin romper la vista actual
+                const clone = container.cloneNode(true);
+
+                // 1. Convertir todas las imágenes a rutas absolutas
+                clone.querySelectorAll("img").forEach((img) => {
+                    const src = img.getAttribute("src");
+                    if (src && !src.startsWith("http")) {
+                        img.src = baseUrl + src;
+                    }
+                });
+
+                // 2. FORZAR ESTILOS DE FONDO (Inlining)
+                // Buscamos todas las tablas y celdas para asegurar el color naranja y la imagen
                 const allElements = clone.querySelectorAll("*");
                 allElements.forEach((el) => {
-                    // Corregir imágenes <img>
-                    if (el.tagName === "IMG") {
-                        const src = el.getAttribute("src");
-                        if (src && !src.startsWith("http"))
-                            el.src = baseUrl + src;
-                    }
+                    // Si el elemento tiene un background-image en el CSS, lo forzamos con la URL completa
+                    const bgImg = window.getComputedStyle(
+                        document.querySelector(
+                            "." + el.className.split(" ")[0] || "body",
+                        ),
+                    ).backgroundImage;
 
-                    // Corregir Background Images en el estilo inline
-                    const bg = el.style.backgroundImage;
-                    if (bg && bg.includes("url(")) {
-                        const cleanBg = bg.replace(
+                    if (
+                        el.style.backgroundImage &&
+                        el.style.backgroundImage.includes("url(")
+                    ) {
+                        const currentBg = el.style.backgroundImage;
+                        el.style.backgroundImage = currentBg.replace(
                             /url\(['"]?(.*?)['"]?\)/g,
                             (match, p1) => {
                                 return p1.startsWith("http")
@@ -1000,14 +1035,11 @@
                                     : `url('${baseUrl}${p1}')`;
                             },
                         );
-                        el.style.backgroundImage = cleanBg;
-                        el.style.backgroundRepeat = "no-repeat";
-                        el.style.backgroundPosition = "top center";
                     }
 
-                    // FORZAR EL COLOR NARANJA DE RESPALDO
-                    // Si el elemento es una celda de la cabecera, le ponemos el color a mano
+                    // Forzar el color de fondo en contenedores de cabecera y cuerpo
                     if (
+                        el.classList.contains("nl-container") ||
                         el.getAttribute("bgcolor") ||
                         el.style.backgroundColor
                     ) {
@@ -1015,9 +1047,9 @@
                     }
                 });
 
-                // 2. EMBALAJE FINAL
+                // 3. Preparar el HTML final para el portapapeles
                 const finalHtml = `
-        <div style="background-color: #f7a800; width: 100%; margin: 0; padding: 0;">
+        <div style="background-color: #f7a800; padding: 0; margin: 0; width: 100%; -webkit-text-size-adjust: none; text-size-adjust: none;">
             ${clone.outerHTML}
         </div>
     `;
@@ -1026,18 +1058,21 @@
                     const type = "text/html";
                     const blob = new Blob([finalHtml], { type });
                     const data = [new ClipboardItem({ [type]: blob })];
+
                     await navigator.clipboard.write(data);
 
                     const btn = document.getElementById("copyBtn");
-                    btn.innerText = "✨ ¡LISTO PARA TU MAIL!";
+                    btn.innerText = "✨ ¡COPIADO! LISTO PARA PEGAR";
                     btn.style.backgroundColor = "#4CAF50";
+
                     setTimeout(() => {
-                        btn.innerText = "🎯 COPIAR DISEÑO COMPLETO";
+                        btn.innerText = "🚀 COPIAR CORREO (CON FONDOS)";
                         btn.style.backgroundColor = "#f7a800";
                     }, 3000);
                 } catch (err) {
+                    console.error("Error al copiar:", err);
                     alert(
-                        "Error al copiar. Asegúrate de estar en la URL https://",
+                        "Por favor, intenta usar Chrome o Edge en una conexión segura (HTTPS).",
                     );
                 }
             }
