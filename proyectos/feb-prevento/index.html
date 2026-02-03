@@ -974,72 +974,100 @@
         <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999">
             <button
                 id="copyBtn"
-                onclick="copyPerfectHtml()"
+                onclick="copyUltraCompatible()"
                 style="
                     background-color: #f7a800;
                     color: white;
                     border: none;
-                    padding: 18px 30px;
+                    padding: 20px 35px;
                     border-radius: 50px;
                     font-weight: bold;
                     cursor: pointer;
-                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
                     font-family: Arial, sans-serif;
-                    font-size: 16px;
+                    font-size: 18px;
+                    border: 2px solid white;
                 "
             >
-                🚀 COPIAR CORREO (FORMATO BEEFREE)
+                🎯 COPIAR DISEÑO COMPLETO
             </button>
         </div>
 
         <script>
-            async function copyPerfectHtml() {
+            async function copyUltraCompatible() {
                 const container = document.querySelector(".nl-container");
-
-                // Clonamos para no afectar lo que ves en pantalla
                 const clone = container.cloneNode(true);
+                const baseUrl =
+                    "https://proyectos.carbono.mx/proyectos/feb-prevento/";
 
-                // 1. Convertir rutas de imágenes a ABSOLUTAS (para que se vean en el mail)
-                const images = clone.querySelectorAll("img");
-                images.forEach((img) => {
+                // 1. Corregir TODAS las imágenes <img>
+                clone.querySelectorAll("img").forEach((img) => {
                     const src = img.getAttribute("src");
                     if (src && !src.startsWith("http")) {
-                        // Cambia esto por la URL real de donde subiste las imágenes
-                        img.src =
-                            "https://proyectos.carbono.mx/proyectos/feb-prevento/" +
-                            src;
+                        img.src = baseUrl + src;
+                    }
+                    // Asegurar que no se deformen
+                    img.style.display = "block";
+                });
+
+                // 2. FORZAR FONDOS (Background Images y Colors)
+                // Buscamos elementos que en el CSS original tengan fondos
+                const elementsWithBg = clone.querySelectorAll("*");
+                elementsWithBg.forEach((el) => {
+                    // Si es el contenedor principal, forzamos el naranja
+                    if (el.classList.contains("nl-container")) {
+                        el.style.backgroundColor = "#f7a800";
+                        el.style.width = "100%";
+                    }
+
+                    // Corregir backgrounds en los estilos inline
+                    const bgImg = el.style.backgroundImage;
+                    if (
+                        bgImg &&
+                        bgImg.includes("url(") &&
+                        !bgImg.includes("http")
+                    ) {
+                        el.style.backgroundImage = bgImg.replace(
+                            /url\(['"]?(.*?)['"]?\)/g,
+                            `url('${baseUrl}$1')`,
+                        );
                     }
                 });
 
-                // 2. Capturar el HTML con estilos
-                const fullHtml = `
+                // 3. Crear el envoltorio HTML final con estilos críticos en el Head
+                const finalHtml = `
+        <!DOCTYPE html>
         <html>
-            <head>
-                <style>
-                    body { margin: 0; padding: 0; background-color: #f7a800; }
-                    .nl-container { background-color: #f7a800 !important; width: 100% !important; }
-                </style>
-            </head>
-            <body>${clone.outerHTML}</body>
+        <head>
+            <style>
+                body, table, td { background-color: #f7a800 !important; }
+                .nl-container { background-color: #f7a800 !important; }
+            </style>
+        </head>
+        <body style="margin:0; padding:0; background-color: #f7a800;">
+            ${clone.outerHTML}
+        </body>
         </html>
     `;
 
-                const type = "text/html";
-                const blob = new Blob([fullHtml], { type });
-                const data = [new ClipboardItem({ [type]: blob })];
-
                 try {
+                    const type = "text/html";
+                    const blob = new Blob([finalHtml], { type });
+                    const data = [new ClipboardItem({ [type]: blob })];
                     await navigator.clipboard.write(data);
+
                     const btn = document.getElementById("copyBtn");
-                    btn.innerText = "✅ ¡LISTO! PÉGALO EN TU MAIL";
+                    btn.innerText = "✨ ¡COPIADO CON ÉXITO!";
                     btn.style.backgroundColor = "#4CAF50";
                     setTimeout(() => {
-                        btn.innerText = "🚀 COPIAR CORREO (FORMATO BEEFREE)";
+                        btn.innerText = "🎯 COPIAR DISEÑO COMPLETO";
                         btn.style.backgroundColor = "#f7a800";
                     }, 3000);
                 } catch (err) {
                     console.error(err);
-                    alert("Error al copiar. Intenta abrir la página en HTTPS.");
+                    alert(
+                        "Error crítico al copiar. Verifica que la URL sea HTTPS.",
+                    );
                 }
             }
         </script>
