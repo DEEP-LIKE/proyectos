@@ -971,74 +971,53 @@
             </tbody>
         </table>
         <!-- End -->
-        <style>
-            .btn-copy-container {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                z-index: 1000;
-                font-family: "Roboto", sans-serif;
-            }
-            .btn-copy {
-                background-color: #f7a800; /* Color naranja de tu marca */
-                color: white;
-                border: none;
-                padding: 15px 25px;
-                border-radius: 30px;
-                cursor: pointer;
-                font-weight: bold;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                transition: transform 0.2s;
-            }
-            .btn-copy:hover {
-                transform: scale(1.05);
-                background-color: #d69200;
-            }
-        </style>
-
-        <div class="btn-copy-container">
-            <button class="btn-copy" onclick="copyEmailHtml()">
-                📋 Copiar Correo para Pegar
+        <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999">
+            <button
+                id="copyBtn"
+                onclick="copyRichText()"
+                style="
+                    background-color: #f7a800;
+                    color: white;
+                    border: none;
+                    padding: 16px 24px;
+                    border-radius: 8px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                    font-family: &quot;Roboto&quot;, sans-serif;
+                "
+            >
+                📋 COPIAR CORREO (FORMATO REAL)
             </button>
         </div>
 
         <script>
-            async function copyEmailHtml() {
-                // 1. Obtenemos el contenedor principal del correo (nl-container)
-                const emailElement = document.querySelector(".nl-container");
-
-                // 2. Creamos un Blob de tipo HTML
-                // Incluimos los estilos del <head> para que los fondos y media queries se mantengan
-                const fullHtml = `
-        <html>
-            <head>${document.head.innerHTML}</head>
-            <body>${emailElement.outerHTML}</body>
-        </html>
-    `;
-
-                const type = "text/html";
-                const blob = new Blob([fullHtml], { type });
-                const data = [new ClipboardItem({ [type]: blob })];
+            function copyRichText() {
+                const container = document.querySelector(".nl-container"); // Selecciona el contenedor principal
+                const range = document.createRange();
+                range.selectNode(container);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
 
                 try {
-                    await navigator.clipboard.write(data);
+                    // Forzamos el comando de copia del sistema para capturar el renderizado
+                    const successful = document.execCommand("copy");
+                    const btn = document.getElementById("copyBtn");
 
-                    // Feedback visual
-                    const btn = document.querySelector(".btn-copy");
-                    const originalText = btn.innerText;
-                    btn.innerText = "✅ ¡Copiado! Pégalo en tu Mail";
-                    btn.style.backgroundColor = "#4CAF50";
-
-                    setTimeout(() => {
-                        btn.innerText = originalText;
-                        btn.style.backgroundColor = "#f7a800";
-                    }, 3000);
+                    if (successful) {
+                        btn.innerText = "✅ ¡LISTO PARA PEGAR!";
+                        btn.style.backgroundColor = "#4CAF50";
+                        setTimeout(() => {
+                            btn.innerText = "📋 COPIAR CORREO (FORMATO REAL)";
+                            btn.style.backgroundColor = "#f7a800";
+                        }, 3000);
+                    }
                 } catch (err) {
-                    console.error("Error al copiar: ", err);
                     alert(
-                        "Hubo un error al copiar. Asegúrate de usar una conexión segura (HTTPS).",
+                        "Error al copiar. Intenta seleccionando manualmente.",
                     );
                 }
+                window.getSelection().removeAllRanges();
             }
         </script>
     </body>
