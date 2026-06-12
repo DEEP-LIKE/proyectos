@@ -4,9 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eypex — Automotive Lighting Reinvented | Light Is The Language</title>
+    <title>Eypex | Tier 1 Automotive Lighting & Engineering Solutions</title>
     <meta name="description"
-        content="Eypex engineers adaptive matrix headlamps, laser road projection, and magnetic architectures for the next generation of OEMs.">
+        content="Eypex connects innovation with execution across the vehicle development lifecycle. We deliver integrated Tier 1 solutions in automotive lighting, decorative integration, and floor protection systems for OEMs globally.">
+    <meta name="keywords"
+        content="Tier 1 Automotive Supplier, OEM Vehicle Illumination, Automotive Floor Protection Systems, Injection Molding, Optical Design Michigan, IATF 16949 Certified Manufacturer, Automotive Engineering, Decorative Integration">
+    <link rel="canonical" href="https://www.eypex.com/" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.eypex.com/">
+    <meta property="og:title" content="Eypex | Tier 1 Automotive Lighting & Engineering Solutions">
+    <meta property="og:description"
+        content="Delivering integrated solutions that accelerate automotive programs, reduce complexity, and drive results for the next generation of OEMs.">
+    <meta property="og:image" content="https://www.eypex.com/images/white_logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.eypex.com/">
+    <meta property="twitter:title" content="Eypex | Tier 1 Automotive Lighting & Engineering Solutions">
+    <meta property="twitter:description"
+        content="Delivering integrated solutions that accelerate automotive programs, reduce complexity, and drive results for the next generation of OEMs.">
+    <meta property="twitter:image" content="https://www.eypex.com/images/white_logo.png">
+
+    <!-- JSON-LD Local Business & Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Eypex",
+      "image": "https://www.eypex.com/images/white_logo.png",
+      "url": "https://www.eypex.com/",
+      "telephone": "+1-800-555-EYPEX",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pontiac",
+        "addressRegion": "MI",
+        "addressCountry": "US"
+      },
+      "description": "Eypex is a Tier 1 Automotive Supplier specializing in automotive lighting, decorative integration, and floor protection systems.",
+      "sameAs": [
+        "https://www.linkedin.com/company/eypex"
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -277,18 +318,36 @@
             background: var(--black-deep);
         }
 
-        /* Grid de fondo */
+        /* Estrellas y reflejo de luz de fondo */
         .hero-grid {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-color: var(--black-deep);
             background-image:
-                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0)),
+                radial-gradient(ellipse at bottom, rgba(0, 212, 255, 0.15) 0%, transparent 60%);
+            background-repeat: repeat;
+            background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%;
             z-index: 1;
+            animation: starsTwinkle 4s infinite alternate;
+        }
+
+        @keyframes starsTwinkle {
+            0% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         /* CONO DE LUZ REAL - SVG */
@@ -607,7 +666,7 @@
         }
 
         #belief .container {
-            max-width: 900px;
+            max-width: 1200px;
             text-align: center;
         }
 
@@ -1566,6 +1625,17 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* Falling Light Rays (Simulating driving through rain/snow with high beams) */
+        #light-rays-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -1573,14 +1643,13 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="nav-logo">
-                <img src="images/white_logo.png" alt="Eypex Logo">
+                <img src="images/white_logo.png" alt="Eypex - Tier 1 Automotive Lighting Supplier">
             </a>
             <ul class="nav-links">
-                <li><a href="#belief">Our Story</a></li>
+                <li><a href="#belief">Our Role</a></li>
                 <li><a href="#solutions">Solutions</a></li>
-                <li><a href="#magnetic-solutions">Magnetics</a></li>
                 <li><a href="#process">Process</a></li>
-
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="#contact" class="nav-cta">Request Demo</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -1590,567 +1659,701 @@
     </nav>
 
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#belief" class="mobile-link">Our Story</a>
+        <a href="#belief" class="mobile-link">Our Role</a>
         <a href="#solutions" class="mobile-link">Solutions</a>
-        <a href="#magnetic-solutions" class="mobile-link">Magnetics</a>
-        <a href="#process" class="mobile-link">Process</a>
+        <a href="#magnetic-solutions" class="mobile-link">Transformation</a>
+        <a href="#contact" class="mobile-link">Contact</a>
 
         <a href="#contact" class="mobile-link">Contact</a>
     </div>
 
-    <!-- HERO CON CONO DE LUZ REAL -->
-    <section id="hero">
-        <div class="hero-grid"></div>
+    <main>
+        <!-- HERO CON CONO DE LUZ REAL -->
+        <section id="hero">
+            <div class="hero-grid"></div>
 
-        <!-- Cono de luz SVG -->
-        <div class="hero-beam-container">
-            <svg class="beam-svg" id="beamSvg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
-                <defs>
-                    <!-- Gradiente del haz de luz -->
-                    <linearGradient id="beamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:rgba(0,212,255,0.9);stop-opacity:1" />
-                        <stop offset="30%" style="stop-color:rgba(0,212,255,0.4);stop-opacity:0.6" />
-                        <stop offset="70%" style="stop-color:rgba(0,212,255,0.1);stop-opacity:0.3" />
-                        <stop offset="100%" style="stop-color:rgba(0,212,255,0);stop-opacity:0" />
-                    </linearGradient>
+            <!-- Canvas for dynamic light rays -->
+            <canvas id="light-rays-canvas"></canvas>
 
-                    <!-- Filtro de blur para glow -->
-                    <filter id="beamBlur" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
-                    </filter>
+            <!-- Cono de luz SVG -->
+            <div class="hero-beam-container">
+                <svg class="beam-svg" id="beamSvg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+                    <defs>
+                        <!-- Gradiente del haz de luz -->
+                        <linearGradient id="beamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:rgba(0,212,255,0.9);stop-opacity:1" />
+                            <stop offset="30%" style="stop-color:rgba(0,212,255,0.4);stop-opacity:0.6" />
+                            <stop offset="70%" style="stop-color:rgba(0,212,255,0.1);stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:rgba(0,212,255,0);stop-opacity:0" />
+                        </linearGradient>
 
-                    <!-- Filtro de glow intenso -->
-                    <filter id="beamGlow" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
-                        <feMerge>
-                            <feMergeNode in="blur" />
-                            <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                    </filter>
-                </defs>
+                        <!-- Filtro de blur para glow -->
+                        <filter id="beamBlur" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
+                        </filter>
 
-                <!-- Capa de glow (blur) -->
-                <path id="beamGlowPath" d="M 96,540 L 96,540 L 96,540 Z" fill="url(#beamGradient)"
-                    filter="url(#beamGlow)" opacity="0.6" />
+                        <!-- Filtro de glow intenso -->
+                        <filter id="beamGlow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
 
-                <!-- Capa principal del haz -->
-                <path id="beamPath" d="M 96,540 L 96,540 L 96,540 Z" fill="url(#beamGradient)" opacity="0.8" />
+                    <!-- Capa de glow (blur) -->
+                    <path id="beamGlowPath" d="M 96,540 L 96,540 L 96,540 Z" fill="url(#beamGradient)"
+                        filter="url(#beamGlow)" opacity="0.6" />
 
-                <!-- Línea central brillante -->
-                <line id="beamCenterLine" x1="96" y1="540" x2="96" y2="540" stroke="rgba(0,212,255,0.9)"
-                    stroke-width="2" filter="url(#beamBlur)" />
-            </svg>
+                    <!-- Capa principal del haz -->
+                    <path id="beamPath" d="M 96,540 L 96,540 L 96,540 Z" fill="url(#beamGradient)" opacity="0.8" />
 
-            <!-- Punto de origen -->
-            <div class="beam-origin"></div>
-        </div>
+                    <!-- Línea central brillante -->
+                    <line id="beamCenterLine" x1="96" y1="540" x2="96" y2="540" stroke="rgba(0,212,255,0.9)"
+                        stroke-width="2" filter="url(#beamBlur)" />
+                </svg>
 
-        <div class="hero-content">
-            <div class="hero-badge">Automotive Lighting Reinvented</div>
-            <div class="hero-logo">
-                <img src="images/white_logo.png" alt="Eypex Logo">
+                <!-- Punto de origen -->
+                <div class="beam-origin"></div>
             </div>
-            <h2 class="hero-headline">Light is the <span class="accent">Language</span><br>of Identity.</h2>
-            <p class="hero-subtitle">Eypex engineers adaptive matrix headlamps, laser road projection, and magnetic
-                architectures for the next generation of OEMs and electric mobility platforms.</p>
-            <div class="hero-ctas">
-                <a href="#matrix-demo" class="btn-primary">View Technology Showcase →</a>
-                <a href="#contact" class="btn-secondary">Contact Engineering</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll to begin</span>
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
 
-    <!-- STATS BAR -->
-    <div class="stats-bar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <div class="stat-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5" />
-                            <path d="M2 12l10 5 10-5" />
-                        </svg>
+            <div class="hero-content">
+                <div class="hero-badge">Powering Possibilities</div>
+                <div class="hero-logo">
+                    <img src="images/white_logo.png" alt="Eypex - Tier 1 Automotive Lighting Supplier">
+                </div>
+                <h1 class="hero-headline">Engineered Solutions <span class="accent">Integrated</span><br>for Mobility
+                </h1>
+                <p class="hero-subtitle">Eypex Connect innovation with execution across the vehicle development
+                    lifecycle -
+                    deliver me, integrated solutions that accelerate programs, reduce complexity, and drive results.</p>
+                <div class="hero-ctas">
+                    <a href="#solutions" class="btn-primary">Explore Solutions</a>
+                    <a href="#contact" class="btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll to begin</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item reveal">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="20">0</div>
+                        <div class="stat-label">Years R&D</div>
                     </div>
-                    <div class="stat-number" data-target="20">0</div>
-                    <div class="stat-label">Years R&D</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                        </svg>
+                    <div class="stat-item reveal">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">OEM Programs</div>
                     </div>
-                    <div class="stat-number" data-target="50">0</div>
-                    <div class="stat-label">OEM Programs</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <line x1="16" y1="13" x2="8" y2="13" />
-                            <line x1="16" y1="17" x2="8" y2="17" />
-                        </svg>
+                    <div class="stat-item reveal">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="120">0</div>
+                        <div class="stat-label">Global Patents</div>
                     </div>
-                    <div class="stat-number" data-target="120">0</div>
-                    <div class="stat-label">Global Patents</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-certified">ISO/IATF<br>16949 Certified</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BELIEF -->
-    <section id="belief" class="bg-mesh-cyan">
-        <div class="container reveal">
-            <div class="belief-number">01 // OUR BELIEF</div>
-            <h2 class="belief-title">Every vehicle has a voice.</h2>
-            <h3 class="belief-headline">We give it <span class="gradient-text">light</span>.</h3>
-            <p class="belief-text" style="margin-bottom: 40px;">For over two decades, Eypex has pursued one conviction:
-                that illumination isn't decoration — it's communication. The way a headlamp cuts through rain, the way a
-                taillight pulses at dusk, the way an interior strip wraps a cabin in warmth — these are moments of
-                language between a machine and the world around it. We write that language in photons.</p>
-
-            <div class="quote-block"
-                style="border-top: 1px solid rgba(0, 212, 255, 0.15); border-bottom: 1px solid rgba(0, 212, 255, 0.15); padding: 30px 20px; max-width: 700px; margin: 0 auto;">
-                <p
-                    style="font-family: var(--font-display); font-size: 1.1rem; color: var(--white); font-weight: 500; font-style: italic; line-height: 1.6; letter-spacing: 1px; text-shadow: 0 0 10px rgba(0,255,255,0.2);">
-                    "High-end is not something that is merely shiny or expensive. High-end redefines the space in which
-                    the item finds itself. Eypex creates high-end lighting products that redefine the language that
-                    lighting speaks."
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- DYNAMIC LIGHTING SOLUTIONS DETAILS -->
-    <!-- Removed section: lighting-details -->
-
-    <!-- ADAPTIVE MATRIX BEAM DEMO -->
-    <section id="matrix-demo">
-        <div class="container">
-            <div class="matrix-header reveal">
-                <div class="matrix-label">Active Demonstration</div>
-                <h2 class="matrix-title">Adaptive Matrix Beam</h2>
-                <p class="matrix-description">Scroll to simulate environment adaptation. The matrix array deactivates
-                    specific LED zones to prevent glare for oncoming traffic while maximizing road illumination.</p>
-            </div>
-            <div class="matrix-stage reveal">
-                <div class="matrix-headlight"></div>
-                <canvas class="beam-canvas" id="beamCanvas"></canvas>
-                <div class="matrix-hud">
-                    <div>LUX OUTPUT: <span id="luxOutput">0</span> lm</div>
-                    <div>ACTIVE PIXELS: <span id="activePixels">0</span></div>
-                    <div>GLARE ZONES: <span id="glareZones">DETECTED</span></div>
+                    <div class="stat-item reveal">
+                        <div class="stat-certified">ISO/IATF<br>16949 Certified</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- SOLUTIONS -->
+        <!-- BELIEF -->
+        <section id="belief" class="bg-mesh-cyan">
+            <div class="container reveal">
+                <style>
+                    .belief-layout {
+                        display: grid;
+                        grid-template-columns: 1fr 1.2fr;
+                        gap: 60px;
+                        align-items: center;
+                    }
 
-    <section style="padding:40px 0;border-top:1px solid rgba(0,212,255,.1);border-bottom:1px solid rgba(0,212,255,.1)">
-        <div class="container">
-            <h2 class="section-title">Updated Solution Architecture</h2>
-            <p class="section-subtitle">
-                The Solutions section should be rebuilt around the four official Eypex business areas:
-                Vehicle Identity & Decorative Integration, Exterior Illumination, Flooring Protection Systems, and
-                Advanced Development & Specialty Solutions.
-            </p>
-        </div>
-    </section>
+                    .belief-text-content {
+                        text-align: left;
+                    }
 
-    <section id="solutions">
-        <div class="container">
-            <div class="solutions-header reveal">
-                <div class="label">Architecture Solutions</div>
-                <h2 class="section-title">Four Chapters. <span class="gradient-text">One Vision.</span></h2>
-                <p class="section-subtitle" style="margin: 0 auto;">Each solution area is a chapter in the same story —
-                    vehicles that see more clearly, look more distinctly, and move through the world with intention.</p>
-            </div>
+                    .belief-title-left {
+                        font-family: var(--font-heading);
+                        font-size: 0.9rem;
+                        color: var(--blue-electric);
+                        letter-spacing: 4px;
+                        text-transform: uppercase;
+                        margin-bottom: 20px;
+                    }
 
-            <div class="chapter reveal">
-                <div class="chapter-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
-                    <div class="chapter-image-inner">
-                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="beamGrad" x1="0%" y1="50%" x2="100%" y2="50%">
-                                    <stop offset="0%" stop-color="var(--cyan-bright)" stop-opacity="0.8" />
-                                    <stop offset="100%" stop-color="var(--cyan-bright)" stop-opacity="0" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="100" r="15" fill="none" stroke="var(--cyan-bright)" stroke-width="2"
-                                class="pulse-node" />
-                            <circle cx="50" cy="100" r="5" fill="var(--cyan-bright)" />
-                            <path d="M 65 90 L 180 30" stroke="var(--cyan-bright)" stroke-width="1" class="svg-beam"
-                                opacity="0.5" />
-                            <path d="M 65 110 L 180 170" stroke="var(--cyan-bright)" stroke-width="1" class="svg-beam"
-                                opacity="0.5" />
-                            <path d="M 65 100 L 190 100" stroke="var(--cyan-bright)" stroke-width="2"
-                                class="svg-beam" />
-                            <path d="M 65 80 Q 120 50 180 20" fill="none" stroke="url(#beamGrad)" stroke-width="1"
-                                opacity="0.3" />
-                            <path d="M 65 120 Q 120 150 180 180" fill="none" stroke="url(#beamGrad)" stroke-width="1"
-                                opacity="0.3" />
-                            <path d="M 100 60 A 50 50 0 0 1 100 140" fill="none" stroke="var(--gray-light)"
-                                stroke-width="1" stroke-dasharray="4" opacity="0.5" />
-                            <path d="M 140 40 A 80 80 0 0 1 140 160" fill="none" stroke="var(--gray-light)"
-                                stroke-width="1" stroke-dasharray="4" opacity="0.5" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="chapter-content">
-                    <span class="chapter-badge">01 / Dynamic Matrix Headlamps</span>
-                    <h3>Premium Matrix Frontlights</h3>
-                    <p>High-resolution pixel arrays capable of rendering complex welcome animations and precise
-                        glare-free high beams. ECE and SAE homologated for global deployment.</p>
-                    <div class="chapter-features">
-                        <span class="feature-tag">Matrix LED</span><span class="feature-tag">Laser AFS</span>
-                        <span class="feature-tag">Auto-Adapting</span><span class="feature-tag">Quick-Release</span>
-                    </div>
-                    <div class="chapter-specs">
-                        <div><span class="chapter-spec">1.2M</span><span class="chapter-spec-label">Pixels</span></div>
-                        <div><span class="chapter-spec">LiDAR</span><span class="chapter-spec-label">Sync</span></div>
-                    </div>
-                    <a href="#contact" class="chapter-cta">Explore Chapter 01 <svg viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></a>
-                </div>
-            </div>
+                    .belief-headline-left {
+                        font-family: var(--font-display);
+                        font-size: 3.2rem;
+                        line-height: 1.2;
+                        color: var(--white);
+                        margin-bottom: 30px;
+                    }
 
-            <div class="chapter reveal">
-                <div class="chapter-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
-                    <div class="chapter-image-inner">
-                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="40" y="80" width="120" height="40" rx="20" fill="none" stroke="var(--gray-light)"
-                                stroke-width="2" opacity="0.5" />
-                            <circle cx="60" cy="100" r="10" fill="var(--blue-electric)" class="pulse-node"
-                                style="animation-delay: 0s;" />
-                            <circle cx="100" cy="100" r="10" fill="var(--blue-electric)" class="pulse-node"
-                                style="animation-delay: 0.5s;" />
-                            <circle cx="140" cy="100" r="10" fill="var(--blue-electric)" class="pulse-node"
-                                style="animation-delay: 1s;" />
-                            <path d="M 50 100 Q 80 80 100 100 T 150 100" fill="none" stroke="var(--cyan-bright)"
-                                stroke-width="1" class="svg-beam" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="chapter-content">
-                    <span class="chapter-badge">02 / Magnetic Exterior Modules</span>
-                    <h3>Exterior Magnetic Illumination</h3>
-                    <p>Proprietary mag-lock architecture for rapid assembly. Transmits power and data via induction,
-                        eliminating harness complexity and reducing SOP time.</p>
-                    <div class="chapter-features">
-                        <span class="feature-tag">Mag-Lock System</span><span class="feature-tag">Taillamp Strips</span>
-                        <span class="feature-tag">Ambient Contour</span><span
-                            class="feature-tag">Sensor-Triggered</span>
-                    </div>
-                    <div class="chapter-specs">
-                        <div><span class="chapter-spec">IP69K</span><span class="chapter-spec-label">Rated</span></div>
-                        <div><span class="chapter-spec">Zero</span><span class="chapter-spec-label">Harness</span></div>
-                    </div>
-                    <a href="#contact" class="chapter-cta">Explore Chapter 02 <svg viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></a>
-                </div>
-            </div>
+                    @media (max-width: 992px) {
+                        .belief-layout {
+                            grid-template-columns: 1fr;
+                            text-align: center;
+                        }
 
-            <div class="chapter reveal">
-                <div class="chapter-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
-                    <div class="chapter-image-inner">
-                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="40" r="5" fill="var(--cyan-bright)" class="pulse-node" />
-                            <path d="M 100 45 L 40 160 L 160 160 Z" fill="rgba(0, 229, 255, 0.05)"
-                                stroke="var(--cyan-bright)" stroke-width="1" stroke-dasharray="4" />
-                            <line x1="20" y1="130" x2="180" y2="130" stroke="var(--gray-light)" stroke-width="1"
-                                opacity="0.5" />
-                            <rect x="80" y="140" width="40" height="20" rx="2" fill="none" stroke="var(--cyan-bright)"
-                                stroke-width="1" />
-                            <text x="100" y="154" font-family="var(--font-display)" font-size="10"
-                                fill="var(--cyan-bright)" text-anchor="middle">30 KM/H</text>
-                        </svg>
+                        .belief-text-content {
+                            text-align: center;
+                        }
+                    }
+                </style>
+                <div class="belief-layout">
+                    <div class="belief-text-content">
+                        <div class="belief-title-left">OUR ROLE</div>
+                        <h3 class="belief-headline-left">
+                            Connecting Innovation<br>with <span style="color: var(--blue-electric);">Execution.</span>
+                        </h3>
+                        <p class="belief-text" style="margin-bottom: 0;">Eypex connects innovation with execution across
+                            the
+                            vehicle development lifecycle—delivering integrated solutions that accelerate programs,
+                            reduce
+                            complexity, and drive results.</p>
                     </div>
-                </div>
-                <div class="chapter-content">
-                    <span class="chapter-badge">03 / HD Road Projection</span>
-                    <h3>Intelligent Road Projection Systems</h3>
-                    <p>Communicate with the environment. Cast lane widths, hazard warnings, and brand iconography
-                        directly onto the asphalt using micro-mirror lasers.</p>
-                    <div class="chapter-features">
-                        <span class="feature-tag">DLP Projection</span><span class="feature-tag">Lane Assist</span>
-                        <span class="feature-tag">30 km/h</span><span class="feature-tag">ADAS Integrated</span>
-                    </div>
-                    <div class="chapter-specs">
-                        <div><span class="chapter-spec">Micro</span><span class="chapter-spec-label">Mirror</span></div>
-                        <div><span class="chapter-spec">ADAS</span><span class="chapter-spec-label">Integrated</span>
+                    <div class="belief-graphic-content">
+
+                        <style>
+                            .ecosystem-container {
+                                position: relative;
+                                width: 100%;
+                                max-width: 500px;
+                                margin: 0 auto;
+                                aspect-ratio: 1 / 1;
+                            }
+
+                            .ecosystem-center {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                width: 140px;
+                                height: 140px;
+                                background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 80%);
+                                border: 1px solid rgba(0, 212, 255, 0.4);
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+                                z-index: 2;
+                            }
+
+                            .ecosystem-center img {
+                                width: 90px;
+                            }
+
+                            .ecosystem-ring {
+                                position: absolute;
+                                top: 10%;
+                                left: 10%;
+                                width: 80%;
+                                height: 80%;
+                                border: 1px dashed rgba(0, 212, 255, 0.3);
+                                border-radius: 50%;
+                                z-index: 1;
+                                animation: rotateRing 60s linear infinite;
+                            }
+
+                            @keyframes rotateRing {
+                                100% {
+                                    transform: rotate(360deg);
+                                }
+                            }
+
+                            .ecosystem-node {
+                                position: absolute;
+                                width: 100px;
+                                text-align: center;
+                                transform: translate(-50%, -50%);
+                                z-index: 3;
+                            }
+
+                            .node-icon-wrapper {
+                                width: 54px;
+                                height: 54px;
+                                margin: 0 auto 8px;
+                                background: var(--black-card);
+                                border: 1px solid rgba(0, 212, 255, 0.5);
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
+                                color: var(--cyan-bright);
+                                transition: all 0.3s ease;
+                            }
+
+                            .ecosystem-node:hover .node-icon-wrapper {
+                                background: rgba(0, 212, 255, 0.1);
+                                box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+                                transform: scale(1.1);
+                            }
+
+                            .node-icon-wrapper svg {
+                                width: 24px;
+                                height: 24px;
+                                stroke: currentColor;
+                                fill: none;
+                                stroke-width: 1.5;
+                            }
+
+                            .ecosystem-node span {
+                                font-family: var(--font-heading);
+                                font-size: 0.7rem;
+                                color: var(--white);
+                                text-transform: uppercase;
+                                letter-spacing: 1px;
+                            }
+
+                            .node-1 {
+                                top: 10%;
+                                left: 50%;
+                            }
+
+                            .node-2 {
+                                top: 30%;
+                                left: 84.6%;
+                            }
+
+                            .node-3 {
+                                top: 70%;
+                                left: 84.6%;
+                            }
+
+                            .node-4 {
+                                top: 90%;
+                                left: 50%;
+                            }
+
+                            .node-5 {
+                                top: 70%;
+                                left: 15.4%;
+                            }
+
+                            .node-6 {
+                                top: 30%;
+                                left: 15.4%;
+                            }
+
+                            @media (max-width: 768px) {
+                                .ecosystem-container {
+                                    max-width: 320px;
+                                }
+
+                                .node-icon-wrapper {
+                                    width: 40px;
+                                    height: 40px;
+                                }
+
+                                .node-icon-wrapper svg {
+                                    width: 18px;
+                                    height: 18px;
+                                }
+
+                                .ecosystem-node span {
+                                    font-size: 0.55rem;
+                                }
+
+                                .ecosystem-center {
+                                    width: 100px;
+                                    height: 100px;
+                                }
+
+                                .ecosystem-center img {
+                                    width: 60px;
+                                }
+                            }
+                        </style>
+
+                        <div class="ecosystem-container">
+                            <div class="ecosystem-ring"></div>
+                            <div class="ecosystem-center">
+                                <img src="images/white_logo.png" alt="Eypex - Tier 1 Automotive Lighting Supplier">
+                            </div>
+
+                            <div class="ecosystem-node node-1">
+                                <div class="node-icon-wrapper">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H12c-.6 0-1.2.3-1.8.7C7.3 8.6 6 10 6 10s-2.7.6-4.5 1.1c-.8.2-1.5 1-1.5 1.9v3c0 .6.4 1 1 1h2" />
+                                        <circle cx="7" cy="17" r="2" />
+                                        <circle cx="17" cy="17" r="2" />
+                                        <path d="M14 10h-4" />
+                                    </svg>
+                                </div>
+                                <span>OEMs</span>
+                            </div>
+                            <div class="ecosystem-node node-2">
+                                <div class="node-icon-wrapper">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                                        <rect x="9" y="9" width="6" height="6" />
+                                        <line x1="9" y1="1" x2="9" y2="4" />
+                                        <line x1="15" y1="1" x2="15" y2="4" />
+                                        <line x1="9" y1="20" x2="9" y2="23" />
+                                        <line x1="15" y1="20" x2="15" y2="23" />
+                                        <line x1="20" y1="9" x2="23" y2="9" />
+                                        <line x1="20" y1="14" x2="23" y2="14" />
+                                        <line x1="1" y1="9" x2="4" y2="9" />
+                                        <line x1="1" y1="14" x2="4" y2="14" />
+                                    </svg>
+                                </div>
+                                <span>Technology Partners</span>
+                            </div>
+                            <div class="ecosystem-node node-3">
+                                <div class="node-icon-wrapper">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                                        <path d="M17 18h1" />
+                                        <path d="M12 18h1" />
+                                        <path d="M7 18h1" />
+                                    </svg>
+                                </div>
+                                <span>Manufacturing Partners</span>
+                            </div>
+                            <div class="ecosystem-node node-4">
+                                <div class="node-icon-wrapper">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <line x1="2" y1="12" x2="22" y2="12" />
+                                        <path
+                                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                    </svg>
+                                </div>
+                                <span>Global Markets</span>
+                            </div>
+                            <div class="ecosystem-node node-5">
+                                <div class="node-icon-wrapper">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                        <path
+                                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+                                    </svg>
+                                </div>
+                                <span>Engineering Excellence</span>
+                            </div>
+                            <div class="ecosystem-node node-6">
+                                <div class="node-icon-wrapper">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                </div>
+                                <span>Suppliers</span>
+                            </div>
                         </div>
                     </div>
-                    <a href="#contact" class="chapter-cta">Explore Chapter 03 <svg viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></a>
                 </div>
             </div>
+        </section>
 
-            <div class="chapter reveal">
-                <div class="chapter-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
-                    <div class="chapter-image-inner">
-                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="50" y="50" width="100" height="100" rx="6" fill="none" stroke="var(--gray-light)"
-                                stroke-width="1.5" opacity="0.4" />
-                            <rect x="60" y="60" width="80" height="80" rx="4" stroke="var(--cyan-bright)"
-                                stroke-width="1.5" class="svg-beam" />
-                            <line x1="60" y1="80" x2="140" y2="80" stroke="var(--blue-electric)" stroke-width="1"
-                                stroke-dasharray="3" />
-                            <line x1="60" y1="100" x2="140" y2="100" stroke="var(--blue-electric)" stroke-width="1"
-                                stroke-dasharray="3" />
-                            <line x1="60" y1="120" x2="140" y2="120" stroke="var(--blue-electric)" stroke-width="1"
-                                stroke-dasharray="3" />
-                            <circle cx="80" cy="70" r="4" fill="var(--cyan-bright)" class="pulse-node"
-                                style="animation-delay: 0s;" />
-                            <circle cx="120" cy="70" r="4" fill="var(--cyan-bright)" class="pulse-node"
-                                style="animation-delay: 0.3s;" />
-                            <circle cx="80" cy="90" r="4" fill="var(--cyan-bright)" class="pulse-node"
-                                style="animation-delay: 0.6s;" />
-                            <circle cx="120" cy="90" r="4" fill="var(--cyan-bright)" class="pulse-node"
-                                style="animation-delay: 0.9s;" />
-                            <circle cx="80" cy="110" r="4" fill="var(--cyan-bright)" class="pulse-node"
-                                style="animation-delay: 1.2s;" />
-                            <circle cx="120" cy="110" r="4" fill="var(--cyan-bright)" class="pulse-node"
-                                style="animation-delay: 1.5s;" />
-                        </svg>
-                    </div>
+        <!-- DYNAMIC LIGHTING SOLUTIONS DETAILS -->
+        <!-- Removed section: lighting-details -->
+
+
+
+        <!-- SOLUTIONS -->
+
+        <section id="solutions">
+            <div class="container">
+                <div class="solutions-header reveal">
+                    <div class="label">Built for what's next</div>
+                    <h2 class="section-title">FOUR SOLUTIONS. <span class="gradient-text">ENDLESS POSSIBILITIES.</span>
+                    </h2>
+                    <p class="section-subtitle" style="margin: 0 auto;">Our product portfolio is structured to support
+                        customer needs across identity, functionality, protection, and advanced development.</p>
                 </div>
-                <div class="chapter-content">
-                    <span class="chapter-badge">04 / Smart Ambient Contours</span>
-                    <h3>Advanced Development & Custom Modules</h3>
-                    <p>Continuous homogenous light strips for exterior grilles and rear lightbars. Engineered for
-                        thermal stability and zero-pixelation across all conditions.</p>
-                    <div class="chapter-features">
-                        <span class="feature-tag">Custom OEM</span><span class="feature-tag">Rapid Proto</span>
-                        <span class="feature-tag">Thermal Analysis</span><span class="feature-tag">SOP Ready</span>
-                    </div>
-                    <div class="chapter-specs">
-                        <div><span class="chapter-spec">180</span><span class="chapter-spec-label">lm/W</span></div>
-                        <div><span class="chapter-spec">98.4</span><span class="chapter-spec-label">CRI</span></div>
-                        <div><span class="chapter-spec">50K</span><span class="chapter-spec-label">Hrs Life</span></div>
-                    </div>
-                    <a href="#contact" class="chapter-cta">Explore Chapter 04 <svg viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg></a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- MAGNETIC SOLUTIONS -->
-    <section id="magnetic-solutions" class="bg-mesh-cyan"
-        style="padding: var(--section-padding); border-bottom: 1px solid rgba(0, 212, 255, 0.08);">
-        <div class="container">
-            <div class="solutions-header reveal" style="text-align: center; margin-bottom: 80px;">
-                <div class="label"
-                    style="font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 20px;">
-                    Magnetic Solutions</div>
-                <h2 class="section-title">Harnessing <span class="gradient-text">Magnets</span></h2>
-                <p class="section-subtitle" style="margin: 0 auto;">Nature's perfect technology to simplify
-                    manufacturing, installation and accessibility of automotive components while supporting future
-                    growth of sensors and switches.</p>
-            </div>
-
-            <div class="magnetic-layout"
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
-                <div class="reveal">
-                    <!-- Overhead Systems -->
-                    <div
-                        style="background: rgba(12, 12, 12, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(0, 212, 255, 0.15); border-radius: 12px; padding: 40px; margin-bottom: 30px; position: relative;">
-                        <span
-                            style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--cyan-bright); letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 15px;">Fastening
-                            Innovation</span>
-                        <h3
-                            style="font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; color: var(--white); margin-bottom: 20px;">
-                            Overhead Systems</h3>
-                        <p style="color: var(--gray-light); line-height: 1.8; margin-bottom: 20px;">Eypex developed and
-                            patented the first blind fastener for overhead systems. This innovation improved ease of
-                            assembly, blind fastening, and ergonomics, backed by 2 decades of experience providing
-                            ultimate flexibility.</p>
-                        <div
-                            style="font-family: var(--font-heading); font-size: 0.9rem; color: var(--cyan-bright); text-transform: uppercase; letter-spacing: 1px;">
-                            ✓ Patented Blind Fastening</div>
+                <div class="chapter reveal">
+                    <div class="chapter-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="chapter-image-inner">
+                            <img src="images/VEHICLE_IDENTI_Y_&_DECORATIVE_INTEGRATION.gif"
+                                alt="Vehicle Identity & Decorative Integration"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block;">
+                        </div>
+                    </div>
+                    <div class="chapter-content">
+                        <span class="chapter-badge">01 / Decorative Integration</span>
+                        <h3>VEHICLE IDENTITY & DECORATIVE INTEGRATION</h3>
+                        <p>Fusing brand identity with advanced illumination. We create animated emblems, continuous
+                            homogenous grilles, lit sill plates, and tailgate lighting with zero pixelation and thermal
+                            stability.</p>
+                        <div class="chapter-features">
+                            <span class="feature-tag">Illuminated Emblems</span><span class="feature-tag">Grille
+                                Contours</span>
+                            <span class="feature-tag">Lit Sill Plates</span><span class="feature-tag">Tailgate
+                                Lighting</span>
+                        </div>
+                        <div class="chapter-specs">
+                            <div><span class="chapter-spec">Zero</span><span
+                                    class="chapter-spec-label">Pixelation</span>
+                            </div>
+                            <div><span class="chapter-spec">50K</span><span class="chapter-spec-label">Hrs Life</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="chapter-cta">Explore Decorative Trim <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
                     </div>
                 </div>
 
-                <div class="reveal">
-                    <!-- Sensing The Future -->
-                    <div
-                        style="background: rgba(12, 12, 12, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(189, 0, 255, 0.2); border-radius: 12px; padding: 40px; position: relative;">
-                        <span
-                            style="font-family: var(--font-heading); font-size: 0.8rem; color: #bd00ff; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 15px;">Sensing
-                            The Future</span>
-                        <h3
-                            style="font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; color: var(--white); margin-bottom: 20px;">
-                            Contactless Sensors</h3>
-                        <p style="color: var(--gray-light); line-height: 1.8; margin-bottom: 20px;">Magnetic sensors
-                            offer contactless, wear-free, and incredibly durable measurements. We are reimagining old
-                            technology and making it new to pave the way for future autonomous platforms.</p>
-                        <div
-                            style="font-family: var(--font-heading); font-size: 0.9rem; color: #bd00ff; text-transform: uppercase; letter-spacing: 1px;">
-                            ✓ WEAR-FREE measurements</div>
+                <div class="chapter reveal">
+                    <div class="chapter-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="chapter-image-inner">
+                            <img src="images/exterior.gif" alt="Exterior Illumination"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block;">
+                        </div>
+                    </div>
+                    <div class="chapter-content">
+                        <span class="chapter-badge">02 / Automotive Illumination</span>
+                        <h3>EXTERIOR ILLUMINATION</h3>
+                        <p>Engineered lighting systems encompassing ambient interior environments, high-intensity
+                            exterior
+                            matrix beams, map lights, and puddle lamps. Proven execution bridging brand identity, user
+                            experience, and safety.</p>
+                        <div class="chapter-features">
+                            <span class="feature-tag">Ambient Lighting</span><span class="feature-tag">Matrix LED</span>
+                            <span class="feature-tag">Puddle Lamps</span><span class="feature-tag">Laser AFS</span>
+                        </div>
+                        <div class="chapter-specs">
+                            <div><span class="chapter-spec">ECE/SAE</span><span
+                                    class="chapter-spec-label">Homologated</span></div>
+                            <div><span class="chapter-spec">High</span><span class="chapter-spec-label">Intensity</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="chapter-cta">Explore Lighting Solutions <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Core Applications -->
-            <div class="reveal"
-                style="margin-top: 60px; background: var(--black-soft); border-radius: 12px; padding: 30px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center;">
-                <h4
-                    style="font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--white); margin-bottom: 20px;">
-                    Core Product Lines</h4>
-                <div style="display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;">
-                    <div style="font-family: var(--font-display); font-size: 1.2rem; color: var(--cyan-bright);"><span
-                            style="color: var(--white-soft); font-weight: 300; margin-right: 10px;">01.</span> MOTORS
+                <div class="chapter reveal">
+                    <div class="chapter-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="chapter-image-inner">
+                            <img src="images/FLOORING .gif" alt="Flooring Protection Systems"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block;">
+                        </div>
                     </div>
-                    <div style="font-family: var(--font-display); font-size: 1.2rem; color: var(--cyan-bright);"><span
-                            style="color: var(--white-soft); font-weight: 300; margin-right: 10px;">02.</span> SENSORS
-                    </div>
-                    <div style="font-family: var(--font-display); font-size: 1.2rem; color: var(--cyan-bright);"><span
-                            style="color: var(--white-soft); font-weight: 300; margin-right: 10px;">03.</span> FASTENERS
+                    <div class="chapter-content">
+                        <span class="chapter-badge">03 / Advanced Interiors</span>
+                        <h3>FLOORING PROTECTION SYSTEMS</h3>
+                        <p>Comprehensive protection and aesthetic integration for vehicle interiors. An expanded
+                            portfolio
+                            covering all-weather mats, carpet protection, cargo solutions, trunk protection, and grommet
+                            integration.</p>
+                        <div class="chapter-features">
+                            <span class="feature-tag">All-Weather</span><span class="feature-tag">Carpet Mats</span>
+                            <span class="feature-tag">Cargo & Trunk</span><span class="feature-tag">Grommet Sync</span>
+                        </div>
+                        <div class="chapter-specs">
+                            <div><span class="chapter-spec">Custom</span><span class="chapter-spec-label">Molding</span>
+                            </div>
+                            <div><span class="chapter-spec">Premium</span><span
+                                    class="chapter-spec-label">Materials</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="chapter-cta">Explore Floor Systems <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- PRODUCT DEVELOPMENT & IDEATION -->
-    <!-- Removed section: development -->
-
-    <!-- PROCESS -->
-    <section id="process" class="bg-mesh-dark"
-        style="padding: var(--section-padding); border-bottom: 1px solid rgba(0, 212, 255, 0.08);">
-        <div class="container">
-            <div class="process-header reveal" style="text-align: center; margin-bottom: 60px;">
-                <div class="label"
-                    style="font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 20px;">
-                    Execution Flow</div>
-                <h2 class="section-title">Concept to <span class="gradient-text">SOP</span></h2>
-                <p class="section-subtitle" style="margin: 0 auto;">By assembling experienced engineers, unique
-                    thinkers, and latest processes, we conquer roads not yet traveled.</p>
-            </div>
-
-            <!-- Dynamic Process Selector -->
-            <div class="reveal" style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center;">
-                <!-- Left: Tab Buttons -->
-                <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <button class="process-tab-btn active" data-step="0"
-                        style="text-align: left; padding: 20px; border-radius: 8px; border: 1px solid rgba(0, 212, 255, 0.3); background: rgba(0, 212, 255, 0.05); color: var(--white); font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
-                        <span>01 // IDEATION & DISCOVERY</span>
-                        <span style="font-size: 1.2rem;">→</span>
-                    </button>
-                    <button class="process-tab-btn" data-step="1"
-                        style="text-align: left; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); background: transparent; color: var(--gray-light); font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
-                        <span>02 // ENGINEERING & CAPABILITY</span>
-                        <span style="font-size: 1.2rem;">→</span>
-                    </button>
-                    <button class="process-tab-btn" data-step="2"
-                        style="text-align: left; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); background: transparent; color: var(--gray-light); font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
-                        <span>03 // VALIDATION & STRESS TESTS</span>
-                        <span style="font-size: 1.2rem;">→</span>
-                    </button>
-                    <button class="process-tab-btn" data-step="3"
-                        style="text-align: left; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); background: transparent; color: var(--gray-light); font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
-                        <span>04 // SERIES PRODUCTION & SOP</span>
-                        <span style="font-size: 1.2rem;">→</span>
-                    </button>
-                </div>
-
-                <!-- Right: Active Info Panel -->
-                <div id="process-info-panel"
-                    style="background: var(--black-card); border: 1px solid rgba(0, 212, 255, 0.15); border-radius: 16px; padding: 50px; min-height: 320px; display: flex; flex-direction: column; justify-content: center; box-shadow: var(--glow-md); position: relative; overflow: hidden;">
-                    <!-- Ambient Glow in panel -->
-                    <div
-                        style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(0, 212, 255, 0.1); filter: blur(40px); border-radius: 50%;">
+                <div class="chapter reveal">
+                    <div class="chapter-image" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="chapter-image-inner">
+                            <img src="images/ADVANCED_DEVELOPMENT_SPECIAL.gif"
+                                alt="Advanced Development & Specialty Solutions"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block;">
+                        </div>
                     </div>
-
-                    <div id="process-step-title"
-                        style="font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 20px; text-shadow: var(--glow-text);">
-                        Concept & Discovery</div>
-                    <p id="process-step-desc" style="color: var(--white-soft); font-size: 1.05rem; line-height: 1.8;">
-                        Every project starts with understanding what the vehicle needs to say — performance, luxury,
-                        safety, or something entirely new. We dig into the brand language first, aligning engineering
-                        and design visions.</p>
+                    <div class="chapter-content">
+                        <span class="chapter-badge">04 / End-to-End Execution</span>
+                        <h3>ADVANCED DEVELOPMENT & SPECIALTY SOLUTIONS</h3>
+                        <p>From concept to SOP. Comprehensive engineering capabilities including optical design,
+                            injection
+                            molding, electronics, and rigorous validation. Agile development with scalable production
+                            and
+                            OEM-ready quality systems.</p>
+                        <div class="chapter-features">
+                            <span class="feature-tag">Optical Design</span><span class="feature-tag">Injection
+                                Molding</span>
+                            <span class="feature-tag">SPEOS / ZEMAX</span><span class="feature-tag">IATF 16949</span>
+                        </div>
+                        <div class="chapter-specs">
+                            <div><span class="chapter-spec">Concept</span><span class="chapter-spec-label">to SOP</span>
+                            </div>
+                            <div><span class="chapter-spec">Local</span><span class="chapter-spec-label">U.S.
+                                    Support</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="chapter-cta">Explore Engineering <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- LEADERSHIP -->
-    <!-- Removed section: leadership -->
+        <!-- PRODUCT DEVELOPMENT & IDEATION -->
+        <!-- Removed section: development -->
 
-    <!-- HISTORY -->
-    <!-- Removed section: history -->
-
-    <!-- WHY -->
-    <!-- Removed section: why -->
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info reveal">
+        <!-- PROCESS -->
+        <section id="process" class="bg-mesh-dark"
+            style="padding: var(--section-padding); border-bottom: 1px solid rgba(0, 212, 255, 0.08);">
+            <div class="container">
+                <div class="process-header reveal" style="text-align: center; margin-bottom: 60px;">
                     <div class="label"
                         style="font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 20px;">
-                        OEM Integration</div>
-                    <h2>Book a Technical <span class="gradient-text">Consultation</span></h2>
-                    <p>Connect with our engineering deployment team to discuss platform architecture, homologation
-                        requirements, and R&D timelines for your next vehicle program.</p>
-                    <div class="contact-checks">
-                        <div class="contact-check"><span class="check-icon">✓</span>Response within 24h</div>
-                        <div class="contact-check"><span class="check-icon">✓</span>NDA Available</div>
-                        <div class="contact-check"><span class="check-icon">✓</span>Tier 1 Capabilities</div>
-                        <div class="contact-check"><span class="check-icon">✓</span>Global Support</div>
-                    </div>
+                        Execution Flow</div>
+                    <h2 class="section-title">Concept to <span class="gradient-text">SOP</span></h2>
+                    <p class="section-subtitle" style="margin: 0 auto;">By assembling experienced engineers, unique
+                        thinkers, and latest processes, we conquer roads not yet traveled.</p>
                 </div>
-                <div class="reveal">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name"
-                                name="name" required placeholder="Your full name"></div>
-                        <div class="form-group"><label for="company">Company / OEM</label><input type="text"
-                                id="company" name="company" placeholder="Your company"></div>
-                        <div class="form-group"><label for="email">Corporate Email</label><input type="email" id="email"
-                                name="email" required placeholder="your@email.com"></div>
-                        <div class="form-group">
-                            <label for="stage">Program Stage</label>
-                            <select id="stage" name="stage">
-                                <option value="">Select program phase...</option>
-                                <option value="concept">Concept & Advanced R&D</option>
-                                <option value="prototype">A/B Sample Prototyping</option>
-                                <option value="validation">Validation & Homologation</option>
-                                <option value="production">Series Production</option>
-                            </select>
+
+                <!-- Dynamic Process Selector -->
+                <div class="reveal"
+                    style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center;">
+                    <!-- Left: Tab Buttons -->
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <button class="process-tab-btn active" data-step="0"
+                            style="text-align: left; padding: 20px; border-radius: 8px; border: 1px solid rgba(0, 212, 255, 0.3); background: rgba(0, 212, 255, 0.05); color: var(--white); font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
+                            <span>01 // IDEATION & DISCOVERY</span>
+                            <span style="font-size: 1.2rem;">→</span>
+                        </button>
+                        <button class="process-tab-btn" data-step="1"
+                            style="text-align: left; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); background: transparent; color: var(--gray-light); font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
+                            <span>02 // ENGINEERING & CAPABILITY</span>
+                            <span style="font-size: 1.2rem;">→</span>
+                        </button>
+                        <button class="process-tab-btn" data-step="2"
+                            style="text-align: left; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); background: transparent; color: var(--gray-light); font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
+                            <span>03 // VALIDATION & STRESS TESTS</span>
+                            <span style="font-size: 1.2rem;">→</span>
+                        </button>
+                        <button class="process-tab-btn" data-step="3"
+                            style="text-align: left; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); background: transparent; color: var(--gray-light); font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between;">
+                            <span>04 // SERIES PRODUCTION & SOP</span>
+                            <span style="font-size: 1.2rem;">→</span>
+                        </button>
+                    </div>
+
+                    <!-- Right: Active Info Panel -->
+                    <div id="process-info-panel"
+                        style="background: var(--black-card); border: 1px solid rgba(0, 212, 255, 0.15); border-radius: 16px; padding: 50px; min-height: 320px; display: flex; flex-direction: column; justify-content: center; box-shadow: var(--glow-md); position: relative; overflow: hidden;">
+                        <!-- Ambient Glow in panel -->
+                        <div
+                            style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(0, 212, 255, 0.1); filter: blur(40px); border-radius: 50%;">
                         </div>
-                        <div class="form-group"><label for="message">Project Details</label><textarea id="message"
-                                name="message" placeholder="Tell us about your project..."></textarea></div>
-                        <button type="submit" class="form-submit">Request Engineering Review →</button>
-                    </form>
-                    <div class="form-success" id="formSuccess">
-                        <div class="checkmark">✓</div>
-                        <h3
-                            style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 12px; color: var(--white);">
-                            Request Sent!</h3>
-                        <p style="color: var(--gray-light);">We'll get back to you within 24 hours.</p>
+
+                        <div id="process-step-title"
+                            style="font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 20px; text-shadow: var(--glow-text);">
+                            Concept & Discovery</div>
+                        <p id="process-step-desc"
+                            style="color: var(--white-soft); font-size: 1.05rem; line-height: 1.8;">
+                            Every project starts with understanding what the vehicle needs to say — performance, luxury,
+                            safety, or something entirely new. We dig into the brand language first, aligning
+                            engineering
+                            and design visions.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- LEADERSHIP -->
+        <!-- Removed section: leadership -->
+
+        <!-- HISTORY -->
+        <!-- Removed section: history -->
+
+        <!-- WHY -->
+        <!-- Removed section: why -->
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <div class="label"
+                            style="font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 20px;">
+                            OEM Integration</div>
+                        <h2>Book a Technical <span class="gradient-text">Consultation</span></h2>
+                        <p>Connect with our engineering deployment team to discuss platform architecture, homologation
+                            requirements, and R&D timelines for your next vehicle program.</p>
+                        <div class="contact-checks">
+                            <div class="contact-check"><span class="check-icon">✓</span>Response within 24h</div>
+                            <div class="contact-check"><span class="check-icon">✓</span>NDA Available</div>
+                            <div class="contact-check"><span class="check-icon">✓</span>Tier 1 Capabilities</div>
+                            <div class="contact-check"><span class="check-icon">✓</span>Global Support</div>
+                        </div>
+                    </div>
+                    <div class="reveal">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group"><label for="name">Full Name</label><input type="text" id="name"
+                                    name="name" required placeholder="Your full name"></div>
+                            <div class="form-group"><label for="company">Company / OEM</label><input type="text"
+                                    id="company" name="company" placeholder="Your company"></div>
+                            <div class="form-group"><label for="email">Corporate Email</label><input type="email"
+                                    id="email" name="email" required placeholder="your@email.com"></div>
+                            <div class="form-group">
+                                <label for="stage">Program Stage</label>
+                                <select id="stage" name="stage">
+                                    <option value="">Select program phase...</option>
+                                    <option value="concept">Concept & Advanced R&D</option>
+                                    <option value="prototype">A/B Sample Prototyping</option>
+                                    <option value="validation">Validation & Homologation</option>
+                                    <option value="production">Series Production</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="message">Project Details</label><textarea id="message"
+                                    name="message" placeholder="Tell us about your project..."></textarea></div>
+                            <button type="submit" class="form-submit">Request Engineering Review →</button>
+                        </form>
+                        <div class="form-success" id="formSuccess">
+                            <div class="checkmark">✓</div>
+                            <h3
+                                style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 12px; color: var(--white);">
+                                Request Sent!</h3>
+                            <p style="color: var(--gray-light);">We'll get back to you within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- FOOTER -->
     <footer>
@@ -2158,12 +2361,12 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="nav-logo">
-                        <img src="images/white_logo.png" alt="Eypex Logo">
+                        <img src="images/white_logo.png" alt="Eypex - Tier 1 Automotive Lighting Supplier">
                     </a>
                     <p>ENGINEERED CONNECTIONS. POWERING POSSIBILITIES.<br></p>
                 </div>
                 <div class="footer-links">
-                     <p>Architecting the future of automotive
+                    <p>Architecting the future of automotive
                         illumination. Precision engineering for vehicles that speak the language of light.</p>
                     <!-- <h4>Solutions</h4>
                     <ul>
@@ -2319,81 +2522,7 @@
                 statsObserver.observe(statsBar);
             }
 
-            // ADAPTIVE MATRIX BEAM
-            try {
-                const beamCanvas = document.getElementById('beamCanvas');
-                const beamCtx = beamCanvas.getContext('2d');
-                const matrixStage = document.querySelector('.matrix-stage');
-                let beamWidth = 0, targetBeamWidth = 0;
-                let luxValue = 0, pixelsValue = 0;
 
-                function resizeBeam() {
-                    if (matrixStage) {
-                        beamCanvas.width = matrixStage.offsetWidth;
-                        beamCanvas.height = matrixStage.offsetHeight;
-                    }
-                }
-                resizeBeam();
-                window.addEventListener('resize', resizeBeam);
-
-                function updateBeamFromScroll() {
-                    if (!matrixStage) return;
-                    const rect = matrixStage.getBoundingClientRect();
-                    const viewportHeight = window.innerHeight;
-                    const elementCenter = rect.top + rect.height / 2;
-                    const progress = Math.max(0, Math.min(1, 1 - (elementCenter / viewportHeight)));
-
-                    targetBeamWidth = progress * (beamCanvas.width - 200);
-                    luxValue = Math.round(progress * 2400);
-                    pixelsValue = Math.round(progress * 1200000);
-
-                    document.getElementById('luxOutput').textContent = luxValue.toLocaleString();
-                    document.getElementById('activePixels').textContent = pixelsValue.toLocaleString();
-                }
-
-                function animateBeam() {
-                    beamWidth += (targetBeamWidth - beamWidth) * 0.1;
-
-                    beamCtx.clearRect(0, 0, beamCanvas.width, beamCanvas.height);
-
-                    if (beamWidth > 10) {
-                        const gradient = beamCtx.createLinearGradient(140, 0, 140 + beamWidth, 0);
-                        gradient.addColorStop(0, 'rgba(0, 212, 255, 0.8)');
-                        gradient.addColorStop(0.3, 'rgba(0, 212, 255, 0.4)');
-                        gradient.addColorStop(0.7, 'rgba(0, 212, 255, 0.1)');
-                        gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
-
-                        beamCtx.fillStyle = gradient;
-                        beamCtx.beginPath();
-                        beamCtx.moveTo(140, beamCanvas.height / 2 - 20);
-                        beamCtx.lineTo(140 + beamWidth, beamCanvas.height / 2 - 80);
-                        beamCtx.lineTo(140 + beamWidth, beamCanvas.height / 2 + 80);
-                        beamCtx.lineTo(140, beamCanvas.height / 2 + 20);
-                        beamCtx.closePath();
-                        beamCtx.fill();
-
-                        beamCtx.shadowBlur = 30;
-                        beamCtx.shadowColor = 'rgba(0, 212, 255, 0.5)';
-                        beamCtx.fill();
-                        beamCtx.shadowBlur = 0;
-
-                        beamCtx.strokeStyle = 'rgba(0, 212, 255, 0.1)';
-                        beamCtx.lineWidth = 0.5;
-                        for (let i = 0; i < beamWidth; i += 40) {
-                            beamCtx.beginPath();
-                            beamCtx.moveTo(140 + i, beamCanvas.height / 2 - 80);
-                            beamCtx.lineTo(140 + i, beamCanvas.height / 2 + 80);
-                            beamCtx.stroke();
-                        }
-                    }
-
-                    requestAnimationFrame(animateBeam);
-                }
-                animateBeam();
-
-                window.addEventListener('scroll', updateBeamFromScroll, { passive: true });
-                updateBeamFromScroll();
-            } catch (e) { console.warn('Beam canvas failed:', e); }
 
             // Feature tags animation
             const featureObserver = new IntersectionObserver((entries) => {
@@ -2588,6 +2717,84 @@
             } catch (e) {
                 console.warn('Process tabs failed:', e);
             }
+            // Canvas Light Rays Animation
+            try {
+                const canvas = document.getElementById('light-rays-canvas');
+                if (canvas) {
+                    const ctx = canvas.getContext('2d');
+                    let rays = [];
+
+                    function resizeCanvas() {
+                        canvas.width = window.innerWidth;
+                        canvas.height = window.innerHeight;
+                    }
+
+                    window.addEventListener('resize', resizeCanvas);
+                    resizeCanvas();
+
+                    class LightRay {
+                        constructor() {
+                            this.reset();
+                        }
+
+                        reset() {
+                            this.x = canvas.width / 2 + (Math.random() - 0.5) * canvas.width * 1.5;
+                            this.y = canvas.height / 2 + (Math.random() - 0.5) * canvas.height * 1.5;
+                            this.z = Math.random() * canvas.width;
+                            this.speed = (Math.random() * 5) + 2;
+                            this.length = Math.random() * 100 + 50;
+                            this.opacity = Math.random() * 0.5 + 0.1;
+                        }
+
+                        update() {
+                            this.z -= this.speed;
+                            if (this.z <= 0) {
+                                this.reset();
+                            }
+                        }
+
+                        draw() {
+                            const fov = 300;
+                            const scale = fov / (fov + this.z);
+                            const px = (this.x - canvas.width / 2) * scale + canvas.width / 2;
+                            const py = (this.y - canvas.height / 2) * scale + canvas.height / 2;
+
+                            const scaleTail = fov / (fov + this.z + this.length);
+                            const pxTail = (this.x - canvas.width / 2) * scaleTail + canvas.width / 2;
+                            const pyTail = (this.y - canvas.height / 2) * scaleTail + canvas.height / 2;
+
+                            ctx.beginPath();
+                            ctx.moveTo(pxTail, pyTail);
+                            ctx.lineTo(px, py);
+
+                            const depthAlpha = Math.max(0, 1 - (this.z / canvas.width));
+                            ctx.strokeStyle = `rgba(0, 229, 255, ${this.opacity * depthAlpha})`;
+                            ctx.lineWidth = scale * 3;
+                            ctx.lineCap = 'round';
+                            ctx.stroke();
+                        }
+                    }
+
+                    for (let i = 0; i < 150; i++) {
+                        rays.push(new LightRay());
+                    }
+
+                    function animateRays() {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        rays.forEach(ray => {
+                            ray.update();
+                            ray.draw();
+                        });
+                        requestAnimationFrame(animateRays);
+                    }
+
+                    animateRays();
+                    console.log('✓ Light rays initialized');
+                }
+            } catch (e) {
+                console.warn('Light rays failed:', e);
+            }
+
         })();
     </script>
 </body>
