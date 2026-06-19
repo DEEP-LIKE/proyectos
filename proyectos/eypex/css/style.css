@@ -157,7 +157,7 @@ img {
 }
 .nav-cta:hover {
     background:var(--cyan-bright);
-    color:var(--black-deep);
+    color:var(--white) !important;
     box-shadow:var(--glow-md)
 }
 .hamburger {
@@ -650,6 +650,9 @@ img {
     align-items:center;
     margin-bottom:150px
 }
+.chapter:last-child {
+    margin-bottom:0
+}
 .chapter:nth-child(even) .chapter-image {
     order:2
 }
@@ -839,7 +842,7 @@ img {
     transform:translateX(5px)
 }
 .process-section {
-    padding:var(--section-padding);
+    padding: 60px 0;
     background:linear-gradient(180deg,var(--black-deep) 0%,rgb(0 156 222 / .08) 50%,var(--black-deep) 100%);
     border-bottom:1px solid rgb(0 156 222 / .08)
 }
@@ -1225,42 +1228,32 @@ footer {
     border-top:1px solid rgb(0 156 222 / .08)
 }
 .footer-content {
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    gap:60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:30px;
     margin-bottom:40px
 }
-.footer-brand .nav-logo {
-    margin-bottom:16px
+.footer-logo img {
+    height:70px;
+    width:auto;
+    display:block
 }
-.footer-brand p {
-    font-size:.9rem;
-    color:var(--gray-light);
-    line-height:1.7;
-    max-width:300px
-}
-.footer-links h4 {
-    font-family:var(--font-display);
-    font-size:.8rem;
+.footer-tagline p {
+    font-family:var(--font-heading);
+    font-size:1rem;
     font-weight:700;
     letter-spacing:2px;
-    text-transform:uppercase;
-    color:var(--white);
-    margin-bottom:20px
+    color:var(--white-soft);
+    text-transform:uppercase
 }
-.footer-links ul {
-    list-style:none
-}
-.footer-links li {
-    margin-bottom:12px
-}
-.footer-links a {
-    font-size:.9rem;
-    color:var(--gray-light);
-    transition:color var(--transition-fast)
-}
-.footer-links a:hover {
-    color:var(--cyan-bright)
+@media (max-width:768px) {
+    .footer-content {
+        flex-direction:column;
+        text-align:center;
+        gap:20px
+    }
 }
 .footer-bottom {
     text-align:center;
@@ -1460,8 +1453,8 @@ footer {
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:140px;
-    height:140px;
+    width:184px;
+    height:184px;
     background: radial-gradient(circle, #101820 0%, transparent 80%);
     border:1px solid rgb(0 156 222 / .4);
     border-radius:50%;
@@ -1472,7 +1465,7 @@ footer {
     z-index:2
 }
 .ecosystem-center img {
-    width:90px
+    width:120px
 }
 .ecosystem-ring {
     position:absolute;
@@ -1492,15 +1485,15 @@ footer {
 }
 .ecosystem-node {
     position:absolute;
-    width:100px;
-    text-align:center;
+    width:72px;
+    height:72px;
     transform:translate(-50%,-50%);
     z-index:3
 }
 .node-icon-wrapper {
-    width:54px;
-    height:54px;
-    margin:0 auto 8px;
+    width:72px;
+    height:72px;
+    margin:0;
     background:var(--black-card);
     border:1px solid rgb(0 156 222 / .5);
     border-radius:50%;
@@ -1517,18 +1510,25 @@ footer {
     transform:scale(1.1)
 }
 .node-icon-wrapper svg {
-    width:24px;
-    height:24px;
+    width:32px;
+    height:32px;
     stroke:currentColor;
     fill:none;
     stroke-width:1.5
 }
 .ecosystem-node span {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 8px);
+    transform: translateX(-50%);
+    width: 120px;
+    text-align: center;
     font-family:var(--font-heading);
     font-size:.7rem;
     color:var(--white);
     text-transform:uppercase;
-    letter-spacing:1px
+    letter-spacing:1px;
+    display: block;
 }
 .node-1 {
     top:10%;
@@ -1558,6 +1558,10 @@ footer {
     .ecosystem-container {
         max-width:320px
     }
+    .ecosystem-node {
+        width:40px;
+        height:40px
+    }
     .node-icon-wrapper {
         width:40px;
         height:40px
@@ -1570,10 +1574,10 @@ footer {
         font-size:.55rem
     }
     .ecosystem-center {
-        width:100px;
-        height:100px
+        width:115px;
+        height:115px
     }
     .ecosystem-center img {
-        width:60px
+        width:70px
     }
 }
